@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Platforms>x64</Platforms>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <LangVersion>8.0</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\NativeBindingsGenerator\bin\$(Configuration)\Generated Files\AprUnmanagedApi.cs" Link="Interop\AprUnmanagedApi.cs" />
+    <Compile Include="..\NativeBindingsGenerator\bin\$(Configuration)\Generated Files\Std.cs" Link="Interop\Std.cs" />
+    <Compile Include="..\NativeBindingsGenerator\bin\$(Configuration)\Generated Files\SvnUnmanagedApi.cs" Link="Interop\SvnUnmanagedApi.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Memory" Version="4.5.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\SharpSvnStrings.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>SharpSvnStrings.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\SharpSvnStrings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SharpSvnStrings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>
